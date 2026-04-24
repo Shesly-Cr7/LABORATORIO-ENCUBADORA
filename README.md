@@ -115,7 +115,7 @@ Parte estructural:
 Sensor → ESP32 → OLED 
 ## 6.2 Distema de temperaturaa y peso 
 Conexión del sensor Conexión de la OLED 
-## 6.3 Funcionamiento 
+
 ## 6.3 Funcionamiento
 
 El ESP32 recibe los datos del sensor DHT22 y del módulo HX711, los procesa y los muestra en la pantalla OLED.

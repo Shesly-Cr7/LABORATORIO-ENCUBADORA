@@ -7,6 +7,26 @@ Santiago Mora - 5600775
 
 Daniel Herrera - 56
 
+## Requisitos
+Software:
+- Arduino IDE
+  
+Hardware:
+- ESP32
+- Sensor de temperatura y humedad DHT22
+- Pantalla OLED SSD1306 OLED Display
+- Módulo HX711 (amplificador para celda de carga)
+- Celda de carga 5kg (sensor de peso)
+- Módulo de relé
+- Bombillo (fuente de calor)
+- Ventilador 5v
+- Transformador M-502
+- Puente de diodos
+- Capacitor de 2200 µF / 25 V
+- Regulador de voltaje LM7805
+- Resistencias
+----
+
 # INTRODUCCIÓN
 
 Las incubadoras neonatales son dispositivos biomédicos fundamentales en las unidades de cuidado intensivo neonatal, diseñados para proporcionar un ambiente controlado que simule las condiciones del vientre materno. Estos sistemas permiten regular variables críticas como la temperatura, la humedad y la ventilación, con el objetivo de garantizar la supervivencia y el desarrollo adecuado de los recién nacidos, especialmente aquellos prematuros o con bajo peso al nacer [1][2][3].

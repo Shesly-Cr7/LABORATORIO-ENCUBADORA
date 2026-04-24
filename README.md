@@ -113,13 +113,18 @@ El diseño del sistema se realizó dividiendo el prototipo en **dos módulos pri
 
 ### 1. Cabina principal de incubación
 
+
+<img width="1599" height="899" alt="PHOTO-2026-04-23-09-32-01" src="https://github.com/user-attachments/assets/a104d7ea-a414-4e3d-9d09-5832b46efa79" />
+
 La cabina principal corresponde a la estructura donde se simula el espacio interno de la incubadora neonatal. Esta parte está compuesta por una **cúpula transparente de plástico**, la cual permite observar el interior del sistema sin necesidad de abrirlo completamente. El uso de un material transparente fue importante porque facilita la supervisión visual del prototipo y ayuda a representar la idea de una incubadora real, donde es necesario mantener visibilidad sobre el neonato.
 
 En la parte frontal de esta cúpula se construyó una **puerta de acceso principal** con marco negro, bisagras inferiores y manija, lo que permite abrir y cerrar la incubadora de manera sencilla para introducir o retirar elementos del interior. Esta puerta también facilita el mantenimiento y la revisión del sistema.
 
 Además, en la parte superior inclinada de la cabina se observan **dos compuertas o ventanas de acceso**, también con marco y manija, que permiten una manipulación más localizada del interior sin necesidad de abrir completamente la puerta frontal. Estas aberturas ayudan a que el diseño sea más funcional y se asemeje más a la idea general de una incubadora con accesos parciales.
 
+
 ### 2. Base estructural
+<img width="1599" height="899" alt="PHOTO-2026-04-23-09-31-26" src="https://github.com/user-attachments/assets/07335bb1-0417-44f5-a817-940dc10c4bed" />
 
 La cúpula se encuentra apoyada sobre una **base fabricada en cartón madera**, la cual sirve como soporte mecánico principal del sistema. Esta base cumple varias funciones importantes:
 
@@ -132,6 +137,8 @@ La cúpula se encuentra apoyada sobre una **base fabricada en cartón madera**, 
 El uso de cartón madera permitió construir una base rígida, económica y relativamente fácil de trabajar, lo cual fue adecuado para el desarrollo del laboratorio. Esta parte del sistema cumple entonces una función tanto **estructural** como **funcional**, ya que no solo sostiene la cabina, sino que también forma parte del montaje de medición y calentamiento.
 
 ### 3. Módulo lateral de electrónica y control
+
+<img width="1599" height="899" alt="PHOTO-2026-04-23-09-33-20" src="https://github.com/user-attachments/assets/070fbe35-4ca8-4fd7-a094-09d1b2b000f8" />
 
 A un costado de la incubadora se ubicó una **caja de cartón independiente**, destinada a alojar la mayor parte del sistema electrónico. En esta caja se encuentran el circuito, el transformador, conexiones y otros elementos del sistema de control. Esta decisión de diseño fue útil porque permitió **separar físicamente la electrónica del interior de la incubadora**, reduciendo la exposición directa de los componentes al calor generado dentro de la cabina.
 
@@ -160,13 +167,8 @@ El diseño construido priorizó aspectos como la **visibilidad**, la **facilidad
 En conjunto, la parte estructural del sistema logró integrar una cabina visible, una base de soporte resistente y un módulo externo de control, permitiendo que el prototipo fuera funcional, entendible visualmente y adecuado para la implementación del laboratorio.
 
 
-## 6.1 Sistema de fuente 
-Sensor → ESP32 → OLED 
 
-## 6.2 Distema de temperaturaa y peso 
-Conexión del sensor Conexión de la OLED 
-
-## 6.3 Funcionamiento
+## 6 Funcionamiento
 
 El ESP32 recibe los datos del sensor DHT22 y del módulo HX711, los procesa y los muestra en la pantalla OLED.
 

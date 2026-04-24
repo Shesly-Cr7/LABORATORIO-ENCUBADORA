@@ -5,7 +5,7 @@ Integrantes Shesly Colorado - 5600756
 
 Santiago Mora - 5600775
 
-Daniel Herrera - 56
+Daniel Herrera - 5600588
 
 ## Requisitos
 Software:

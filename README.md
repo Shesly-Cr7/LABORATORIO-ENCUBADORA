@@ -107,12 +107,62 @@ Estas recomendaciones son fundamentales para prevenir daños en los dispositivos
 
 # Diseño del Sistema
 
-Parte estructural: 
+## Parte estructural
 
+El diseño del sistema se realizó dividiendo el prototipo en **dos módulos principales**: una **cabina de incubación** y un **módulo lateral de control y electrónica**. Esta distribución permitió separar la zona donde se encuentra el espacio interno de la incubadora de la zona donde están ubicados la mayor parte del circuito, la alimentación y los elementos de visualización y control.
+
+### 1. Cabina principal de incubación
+
+La cabina principal corresponde a la estructura donde se simula el espacio interno de la incubadora neonatal. Esta parte está compuesta por una **cúpula transparente de plástico**, la cual permite observar el interior del sistema sin necesidad de abrirlo completamente. El uso de un material transparente fue importante porque facilita la supervisión visual del prototipo y ayuda a representar la idea de una incubadora real, donde es necesario mantener visibilidad sobre el neonato.
+
+En la parte frontal de esta cúpula se construyó una **puerta de acceso principal** con marco negro, bisagras inferiores y manija, lo que permite abrir y cerrar la incubadora de manera sencilla para introducir o retirar elementos del interior. Esta puerta también facilita el mantenimiento y la revisión del sistema.
+
+Además, en la parte superior inclinada de la cabina se observan **dos compuertas o ventanas de acceso**, también con marco y manija, que permiten una manipulación más localizada del interior sin necesidad de abrir completamente la puerta frontal. Estas aberturas ayudan a que el diseño sea más funcional y se asemeje más a la idea general de una incubadora con accesos parciales.
+
+### 2. Base estructural
+
+La cúpula se encuentra apoyada sobre una **base fabricada en cartón madera**, la cual sirve como soporte mecánico principal del sistema. Esta base cumple varias funciones importantes:
+
+- sostener la estructura transparente de la incubadora,
+- proporcionar estabilidad al prototipo,
+- alojar internamente elementos como el bombillo,
+- servir como superficie donde se ubica el espacio de apoyo del “bebé” o carga de prueba,
+- integrar la **galga o celda de carga**, utilizada para la medición del peso.
+
+El uso de cartón madera permitió construir una base rígida, económica y relativamente fácil de trabajar, lo cual fue adecuado para el desarrollo del laboratorio. Esta parte del sistema cumple entonces una función tanto **estructural** como **funcional**, ya que no solo sostiene la cabina, sino que también forma parte del montaje de medición y calentamiento.
+
+### 3. Módulo lateral de electrónica y control
+
+A un costado de la incubadora se ubicó una **caja de cartón independiente**, destinada a alojar la mayor parte del sistema electrónico. En esta caja se encuentran el circuito, el transformador, conexiones y otros elementos del sistema de control. Esta decisión de diseño fue útil porque permitió **separar físicamente la electrónica del interior de la incubadora**, reduciendo la exposición directa de los componentes al calor generado dentro de la cabina.
+
+En la cara frontal de esta caja lateral se instaló una pequeña **interfaz de usuario**, compuesta por:
+
+- una **pantalla OLED** para visualizar las variables del sistema,
+- un **botón** de accionamiento,
+- tres **LEDs indicadores**: azul, verde y rojo.
+
+Esta disposición permite consultar el estado del prototipo desde el exterior de forma rápida y cómoda, sin intervenir directamente en la cabina principal.
+
+### 4. Distribución funcional del sistema
+
+Desde el punto de vista físico, el diseño del sistema quedó organizado de forma que cada módulo cumpliera una tarea específica:
+
+- **Cabina transparente:** contiene el ambiente interno de incubación.
+- **Base de cartón madera:** soporta la estructura y aloja elementos mecánicos y funcionales como la galga y la zona de apoyo. además de contener el ventilador y el bombillo para el calor
+- **Caja lateral de cartón:** contiene gran parte de la electrónica, alimentación y visualización.
+
+Esta separación mejora la organización del prototipo, facilita el montaje y permite identificar con mayor claridad qué parte del sistema corresponde a la estructura mecánica y cuál corresponde al control electrónico.
+
+### 5. Consideraciones del diseño estructural
+
+El diseño construido priorizó aspectos como la **visibilidad**, la **facilidad de acceso**, la **distribución ordenada de componentes** y la **separación entre la zona térmica y la zona electrónica**. Aunque se trata de un prototipo académico y no de un equipo clínico real, la estructura desarrollada permite representar de forma clara el funcionamiento general de una incubadora neonatal a escala.
+
+En conjunto, la parte estructural del sistema logró integrar una cabina visible, una base de soporte resistente y un módulo externo de control, permitiendo que el prototipo fuera funcional, entendible visualmente y adecuado para la implementación del laboratorio.
 
 
 ## 6.1 Sistema de fuente 
 Sensor → ESP32 → OLED 
+
 ## 6.2 Distema de temperaturaa y peso 
 Conexión del sensor Conexión de la OLED 
 

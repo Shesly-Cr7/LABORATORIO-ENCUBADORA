@@ -437,7 +437,23 @@ Finalmente, todas las tareas del sistema se coordinan dentro del ciclo principal
 
 ----------
 
-# 8. Análisis de Resultados
+# 8. Resultados
+
+
+https://github.com/user-attachments/assets/d5ade555-2d3d-4e32-bd55-be28e650f263
+
+
+Durante las pruebas realizadas, el sistema permitió registrar y visualizar en tiempo real las variables de temperatura, humedad y peso dentro del prototipo de incubadora neonatal a escala. La pantalla OLED mostró de forma continua estos valores, lo que facilitó la supervisión del comportamiento interno del sistema.
+
+En términos de temperatura, se observó que el bombillo actuó correctamente como fuente de calor, incrementando la temperatura cuando esta descendía por debajo del umbral inferior (36 °C). De igual forma, el ventilador respondió adecuadamente al activarse cuando la temperatura superó el límite superior (37.5 °C), contribuyendo a su reducción.
+
+El sistema de señalización mediante LEDs también funcionó correctamente, permitiendo identificar de manera inmediata el estado térmico: el LED azul indicó temperaturas bajas, el LED verde el rango adecuado y el LED rojo temperaturas elevadas. Esta representación visual complementó la información mostrada en la pantalla.
+
+Respecto a la medición de peso, la celda de carga junto con el módulo HX711 permitió obtener lecturas funcionales del peso aplicado sobre la base. Aunque fue necesario un proceso de calibración, el sistema logró mostrar valores estables durante las pruebas.
+
+En general, el prototipo logró representar de manera adecuada el funcionamiento básico de una incubadora neonatal, integrando medición, visualización y actuación en un mismo sistema.
+
+# 9. Análisis de Resultados
 
 Aunque el prototipo desarrollado cumplió con el objetivo académico de emular el funcionamiento básico de una incubadora neonatal a escala, el sistema presenta varias limitaciones importantes.
 
@@ -453,7 +469,7 @@ Finalmente, tanto la medición del peso como la de temperatura dependen de la ca
 
 ----------
 
-# 9. Costos generales del sistema
+# 10. Costos generales del sistema
 
 | Componente           | Cantidad | Precio Unitario (COP) | Subtotal (COP) |
 |:--------------------:|:--------:|:---------------------:|:--------------:|
@@ -473,7 +489,9 @@ Finalmente, tanto la medición del peso como la de temperatura dependen de la ca
 
 ----------
 
-# 10. Limitaciones del Sistema
+# 11
+
+. Limitaciones del Sistema
 
 El prototipo desarrollado corresponde a un sistema experimental con fines académicos, por lo que no cumple con los requisitos necesarios para su uso clínico. No cuenta con certificaciones médicas, materiales biomédicos especializados ni condiciones de seguridad equivalentes a las de una incubadora neonatal real.
 

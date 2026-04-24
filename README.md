@@ -79,7 +79,7 @@ El ESP32 incorpora un convertidor analógico-digital (ADC) que permite transform
 
 El sistema desarrollado en este proyecto sigue una arquitectura básica de instrumentación biomédica:
 
-Sensor → Adquisición (ESP32) → Procesamiento → Visualización (OLED / MATLAB)
+Sensor → Adquisición (ESP32) → Procesamiento → Visualización (OLED)
 
 Este flujo permite medir, analizar y representar la temperatura en tiempo real, facilitando la toma de decisiones en sistemas biomédicos.
 
@@ -122,9 +122,8 @@ Cómo se visualiza
 
 # Implementación 
 
-## 7.1 Código Arduino Lectura del sensor Envío serial Visualización OLED
+## 7. Código Arduino Lectura del sensor Envío serial Visualización OLED
 
-## 7.2 Código MATLAB Lectura serial Gráfica en tiempo real
 
 # Resultados
 

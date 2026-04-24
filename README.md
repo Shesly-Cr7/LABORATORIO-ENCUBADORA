@@ -41,19 +41,17 @@ El control de temperatura es crítico en neonatología, ya que los recién nacid
 
 El concepto de ambiente térmico neutro se refiere a las condiciones en las cuales el neonato mantiene su temperatura corporal con un gasto mínimo de energía, lo cual es esencial para su desarrollo adecuado [6][10].
 
-## 3.3 Sensores de Temperatura LM35
+## 3.3 Sensore de Temperatura DHT22
 
-El LM35 es un sensor de temperatura analógico cuya salida es proporcional a la temperatura en grados Celsius, con una relación de 10 mV/°C. Este tipo de sensor permite una medición directa mediante conversión analógica-digital en el microcontrolador.
+El DHT22 (AM2302) es un sensor digital integrado de temperatura y humedad relativa que utiliza comunicación serial de un solo cable, entregando datos calibrados directamente sin necesidad de conversión analógica. Ofrece un rango de temperatura de -40 a 80 °C con precisión de ±0.5 °C (mejor que DHT11's ±2 °C), y humedad del 0 al 100% RH con ±2-5% de precisión, ideal para aplicaciones críticas como incubadoras neonatales [15].
 
-### DHT22
-
-El DHT22 es un sensor digital que mide temperatura y humedad relativa, entregando los datos mediante una señal digital procesada internamente. Aunque es más preciso que el DHT11, presenta una menor velocidad de muestreo.
+Aunque su velocidad de muestreo máxima es de 0.5 Hz (una medición cada 2 segundos, menor que DHT11's 1 Hz), compensa con mayor estabilidad y resolución de 0.1 °C, siendo más confiable para monitoreo continuo de largo plazo. Integra un sensor capacitivo para humedad y termistor NTC para temperatura, con alimentación de 3.3-5V y bajo consumo (1-1.5 mA), perfecto para sistemas embebidos como ESP32 [15][16].
 
 ## 3.4 Conversión Analógica y Digital
 
 Los sensores pueden clasificarse según el tipo de señal que generan:
 
-Sensores analógicos (LM35): entregan un voltaje continuo proporcional a la variable medida. Sensores digitales (DHT22): entregan datos procesados en formato digital.
+Sensores analógicos (LM35): entregan un voltaje continuo proporcional a la variable medida. Sensores digitales (DHT22): entregan datos procesados en formato digital [12].
 
 El ESP32 incorpora un convertidor analógico-digital (ADC) que permite transformar señales analógicas en valores digitales para su procesamiento.
 
@@ -123,15 +121,15 @@ Qué aprendiste Qué funcionó Qué mejorarías
 # Preguntas de Discusión
 • Pregunta 1: ¿Qué otras variables (y por qué) además de las aquí mencionadas son críticas en el monitoreo neonatal?
 
-Además de temperatura y humedad, son esenciales saturación de oxígeno (SpO2, para detectar hipoxia o cardiopatías, objetivo >90-95% post-nacimiento), frecuencia cardíaca (FC, ~120-160 lpm para estabilidad hemodinámica), presión arterial (PA), frecuencia respiratoria (FR ~40-60 rpm) y CO2 transcutáneo (TcPCO2, para ventilación no invasiva). Estas previenen hipoxia, acidosis y fallos cardiopulmonares en UCI neonatal.
+Además de temperatura y humedad, son esenciales saturación de oxígeno (SpO2, para detectar hipoxia o cardiopatías, objetivo >90-95% post-nacimiento), frecuencia cardíaca (FC, ~120-160 lpm para estabilidad hemodinámica), presión arterial (PA), frecuencia respiratoria (FR ~40-60 rpm) y CO2 transcutáneo (TcPCO2, para ventilación no invasiva). Estas previenen hipoxia, acidosis y fallos cardiopulmonares en UCI neonatal [17].
 
 • Pregunta 2: ¿Qué haría falta para convertir el sistema desarrollado en una incubadora neonatal real?
 
-Se requiere control cerrado (servo-control PID con actuadores de calefacción/ventilación), cumplimiento IEC 60601-2-19 (precisión ±0.5°C, alarmas, ruido <60 dB(A), uniformidad térmica), materiales biocompatibles (sin VOCs), pruebas de seguridad eléctrica/biológica, esterilizabilidad, certificación FDA/INVIMA/CE y ensayos clínicos. Añadir redundancia en sensores, interfaz usuario y calibración anual.
+Se requiere control cerrado (servo-control PID con actuadores de calefacción/ventilación), cumplimiento IEC 60601-2-19 (precisión ±0.5°C, alarmas, ruido <60 dB(A), uniformidad térmica), materiales biocompatibles (sin VOCs), pruebas de seguridad eléctrica/biológica, esterilizabilidad, certificación FDA/INVIMA/CE y ensayos clínicos. Añadir redundancia en sensores, interfaz usuario y calibración anual [18].
 
 • Pregunta 3: ¿Qué semejanzas hay entre una incubadora neonatal y una servo-cuna?
 
-Ambas regulan temperatura (servo-control para neutral térmico), humedad y protegen neonatos prematuros de pérdida de calor, con calefacción radiante/convección y alarmas. Difieren en que incubadoras son cerradas (mejor aislamiento/humedad, primera semana), servo-cunas abiertas (acceso fácil para cuidados maternos).
+Ambas regulan temperatura (servo-control para neutral térmico), humedad y protegen neonatos prematuros de pérdida de calor, con calefacción radiante/convección y alarmas. Difieren en que incubadoras son cerradas (mejor aislamiento/humedad, primera semana), servo-cunas abiertas (acceso fácil para cuidados maternos) [19].
 
 # Bibliografía
 1. Bustamante, J. B. (2013, July). DISEÑO e IMPLEMENTACIÓN DE UN PROTOTIPO DE INCUBADORA NEONATAL EN CUMPLIMIENTO CON LA NORMA UNE-EN-60601-2-19. dspace.ups.edu.ec. https://dspace.ups.edu.ec/bitstream/123456789/5091/1/UPS-CT002691.pdf
@@ -148,3 +146,8 @@ Ambas regulan temperatura (servo-control para neutral térmico), humedad y prote
 12. Perez, M. D. (n.d.). Incubadora. Scribd. https://es.scribd.com/document/345556833/Incubadora
 13. De Aquino, A. R. G., Da Silva, B. C. O., Barreto, V. P., De Aquino, A. R. G., Trigueiro, E. V., & Feijão, A. R. (2021). Perfil de recém-nascidos de risco relacionado à termorregulação em Unidade de Terapia Intensiva Neonatal. Enfermería Global, 20(1), 59–97. https://doi.org/10.6018/eglobal.414201
 14. Vygon, C., & Vygon, C. (2025, September 29). Hipotermia en recién nacidos, ¿cómo prevenirla? Campus Vygon España. https://campusvygon.com/es/hipotermia-rn/
+15. Tutorial sensor de temperatura y humedad DHT11 y DHT22. (n.d.). Naylamp Mechatronics - Perú. https://naylampmechatronics.com/blog/40_tutorial-sensor-de-temperatura-y-humedad-dht11-y-dht22.html
+16. He, S. (2025, January 20). DHT11 vs DHT22 Sensor Temperature and Humidity tutorial. PCBMay. https://www.pcbmay.com/es/dht11-frente-a-dht22/
+17. Medición de la saturación de oxígeno durante la recepción neonatal, con el fin de establecer parámetros estándar de saturación en el Hospital Gineco Obstétrico Luz Elena Arismendi (2018:Quito). (2018). docs.bvsalud.org. Retrieved April 23, 2026, from https://docs.bvsalud.org/biblioref/2019/08/1010310/revista-pediatria-vfinal-18-22.pdf
+18. Denetim. (n.d.). TS EN 60601-2-19 Equipo médico eléctrico - Parte 2-19: Características específicas para la seguridad básica y el rendimiento requerido de las incubadoras de bebés. https://www.denetim.com/es/laboratuvar/medikal-cihaz-testleri/ts-en-60601-2-19-elektrikli-tibbi-donanim-bolum-2-19-bebek-kuvozlerinin-temel-guvenligi-ve-gerekli-performansi-icin-belirli-ozellikler/
+19. Cochrane. (2025). Atención en la cuna versus atención en incubadora para niños prematuros. Cochrane. https://www.cochrane.org/es/evidence/CD003062_cot-nursing-versus-incubator-care-preterm-infants

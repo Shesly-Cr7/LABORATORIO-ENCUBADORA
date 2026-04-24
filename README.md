@@ -25,9 +25,10 @@ Hardware:
 - Regulador de voltaje LM7805
 - Resistencias
 - LEDs
-----
 
-# INTRODUCCIÓN
+----------
+
+# 1. INTRODUCCIÓN
 
 Las incubadoras neonatales son dispositivos biomédicos fundamentales en las unidades de cuidado intensivo neonatal, diseñados para proporcionar un ambiente controlado que simule las condiciones del vientre materno. Estos sistemas permiten regular variables críticas como la temperatura, la humedad y la ventilación, con el objetivo de garantizar la supervivencia y el desarrollo adecuado de los recién nacidos, especialmente aquellos prematuros o con bajo peso al nacer [1][2][3].
 
@@ -37,7 +38,9 @@ El presente proyecto aborda el diseño e implementación de un sistema de monito
 
 Desde el punto de vista de la instrumentación biomédica, este desarrollo permite aplicar conceptos de adquisición de señales, sensores, procesamiento de datos y visualización, los cuales son esenciales en el diseño de dispositivos médicos. Además, contribuye a comprender la importancia del control preciso de variables fisiológicas en aplicaciones clínicas [9][10].
 
-# OBJETIVOS
+----------
+
+# 2. OBJETIVOS
 
 ## Objetivo General
 Reconocer la importancia de las incubadoras neonatales en la salud del neonato.
@@ -47,7 +50,9 @@ Reconocer la importancia de las incubadoras neonatales en la salud del neonato.
 • Desarrollar un sistema que emule el modo de operación de una incubadora neonatal. 
 • Evaluar cómo impacta el control de variables como temperatura, humedad y flujo de aire en la salud del neonato.
 
-# MARCO TEORICO
+----------
+
+# 3. MARCO TEORICO
 
 ## 3.1 Incubadora Neonatal
 
@@ -79,7 +84,7 @@ El ESP32 incorpora un convertidor analógico-digital (ADC) que permite transform
 
 El sistema desarrollado en este proyecto sigue una arquitectura básica de instrumentación biomédica:
 
-Sensor → Adquisición (ESP32) → Procesamiento → Visualización (OLED)
+Sensor → Adquisición → Procesamiento → Actuación → Visualización(OLED)
 
 Este flujo permite medir, analizar y representar la temperatura en tiempo real, facilitando la toma de decisiones en sistemas biomédicos.
 
@@ -89,9 +94,11 @@ En el control de temperatura de incubadoras existen diferentes estrategias, entr
 El control ON/OFF, implementado en este proyecto, funciona mediante la activación o desactivación completa del actuador (bombillo) cuando la temperatura cruza ciertos umbrales. Este tipo de control es sencillo, pero genera oscilaciones alrededor del valor deseado, como se observó en el comportamiento del sistema.
 Por otro lado, el control proporcional, comúnmente implementado mediante modulación por ancho de pulso (PWM), permite regular la potencia del actuador de forma gradual. En este caso, el sistema no solo enciende o apaga el bombillo, sino que ajusta la cantidad de energía suministrada según el error de temperatura.
 Esto produce una respuesta más suave y reduce las oscilaciones, permitiendo mantener la temperatura más cercana al valor de referencia.
-En comparación, el sistema desarrollado utiliza un control ON/OFF debido a su simplicidad y facilidad de implementación, siendo adecuado para fines académicos. Sin embargo, un control proporcional o PID sería más apropiado para aplicaciones reales en incubadoras neonatales.
+En comparación, el sistema desarrollado utiliza un control ON/OFF debido a su simplicidad y facilidad de implementación, siendo adecuado para fines académicos. Sin embargo, un control proporcional o PID sería más apropiado para aplicaciones reales en incubadoras neonatales.[20][21]
 
-# Materiales y Componentes
+----------
+
+# 4. Materiales y Componentes
 
 ## 4.1 Hardware
 
@@ -99,27 +106,32 @@ Para el desarrollo del prototipo se utilizaron los siguientes componentes: ESP32
 
 ## 4.2 Software
 
-Se realizó un codigo en Arduino IDE para el sistema de control ON/OFF y para la configuración de los sensores usados.
+Se realizó un código en Arduino IDE para el sistema de control ON/OFF y para la configuración de los sensores usados.
 
 El sistema fue diseñado para medir variables relevantes dentro de una incubadora neonatal a escala. El sensor DHT22 mide la temperatura y humedad interna, mientras que la celda de carga permite estimar el peso colocado sobre la plataforma. El ESP32 recibe estas señales, las procesa y muestra los valores en la pantalla OLED.
 
 Además, el sistema incluye una etapa de actuación mediante relés (Control del sistema). El bombillo funciona como fuente de calor y el ventilador permite distribuir o reducir la temperatura interna. La lógica de control se basa en umbrales de temperatura: cuando la temperatura disminuye, se activa el bombillo; cuando la temperatura aumenta por encima del límite establecido, se activa el ventilador.
 
-# SEGURIDAD
+----------
+
+# 5. SEGURIDAD
 
 Durante el desarrollo del proyecto se deben tener en cuenta las siguientes medidas de seguridad:
 
-Verificar los niveles de voltaje antes de energizar el circuito. No exceder los 3.3 V en los pines del ESP32 S3. Evitar cortocircuitos en la protoboard. Manipular correctamente los equipos electrónicos. Mantener ordenado el espacio de trabajo.
+Verificar los niveles de voltaje antes de energizar el circuito. No exceder los 3.3 V en los pines del ESP32. Evitar cortocircuitos en la protoboard. Manipular correctamente los equipos electrónicos. Mantener ordenado el espacio de trabajo.
 
-Estas recomendaciones son fundamentales para prevenir daños en los dispositivos y garantizar un desarrollo seguro de la práctica .
+Estas recomendaciones son fundamentales para prevenir daños en los dispositivos y garantizar un desarrollo seguro de la práctica.
 
-# Diseño del Sistema
+----------
 
-## Parte estructural
+# 6. Diseño del Sistema
+
+
+## 6.1 Parte estructural
 
 El diseño del sistema se realizó dividiendo el prototipo en **dos módulos principales**: una **cabina de incubación** y un **módulo lateral de control y electrónica**. Esta distribución permitió separar la zona donde se encuentra el espacio interno de la incubadora de la zona donde están ubicados la mayor parte del circuito, la alimentación y los elementos de visualización y control.
 
-### 1. Cabina principal de incubación
+### 6.1.1 Cabina principal de incubación
 
 
 <img width="800" height="450" alt="PHOTO-2026-04-23-09-32-01" src="https://github.com/user-attachments/assets/a104d7ea-a414-4e3d-9d09-5832b46efa79" />
@@ -131,7 +143,7 @@ En la parte frontal de esta cúpula se construyó una **puerta de acceso princip
 Además, en la parte superior inclinada de la cabina se observan **dos compuertas o ventanas de acceso**, también con marco y manija, que permiten una manipulación más localizada del interior sin necesidad de abrir completamente la puerta frontal. Estas aberturas ayudan a que el diseño sea más funcional y se asemeje más a la idea general de una incubadora con accesos parciales.
 
 
-### 2. Base estructural
+### 6.1.2 Base estructural
 <img width="800" height="450" alt="PHOTO-2026-04-23-09-31-26" src="https://github.com/user-attachments/assets/07335bb1-0417-44f5-a817-940dc10c4bed" />
 
 La cúpula se encuentra apoyada sobre una **base fabricada en cartón madera**, la cual sirve como soporte mecánico principal del sistema. Esta base cumple varias funciones importantes:
@@ -144,7 +156,7 @@ La cúpula se encuentra apoyada sobre una **base fabricada en cartón madera**, 
 
 El uso de cartón madera permitió construir una base rígida, económica y relativamente fácil de trabajar, lo cual fue adecuado para el desarrollo del laboratorio. Esta parte del sistema cumple entonces una función tanto **estructural** como **funcional**, ya que no solo sostiene la cabina, sino que también forma parte del montaje de medición y calentamiento.
 
-### 3. Módulo lateral de electrónica y control
+### 6.1.3 Módulo lateral de electrónica y control
 
 <img width="800" height="450" alt="PHOTO-2026-04-23-09-33-20" src="https://github.com/user-attachments/assets/070fbe35-4ca8-4fd7-a094-09d1b2b000f8" />
 
@@ -158,25 +170,23 @@ En la cara frontal de esta caja lateral se instaló una pequeña **interfaz de u
 
 Esta disposición permite consultar el estado del prototipo desde el exterior de forma rápida y cómoda, sin intervenir directamente en la cabina principal.
 
-### 4. Distribución funcional del sistema
+### 6.1.4 Distribución funcional del sistema
 
 Desde el punto de vista físico, el diseño del sistema quedó organizado de forma que cada módulo cumpliera una tarea específica:
 
 - **Cabina transparente:** contiene el ambiente interno de incubación.
-- **Base de cartón madera:** soporta la estructura y aloja elementos mecánicos y funcionales como la galga y la zona de apoyo. además de contener el ventilador y el bombillo para el calor
+- **Base de cartón madera:** soporta la estructura y aloja elementos mecánicos y funcionales como la galga y la zona de apoyo. Además de contener el ventilador y el bombillo para el calor
 - **Caja lateral de cartón:** contiene gran parte de la electrónica, alimentación y visualización.
 
 Esta separación mejora la organización del prototipo, facilita el montaje y permite identificar con mayor claridad qué parte del sistema corresponde a la estructura mecánica y cuál corresponde al control electrónico.
 
-### 5. Consideraciones del diseño estructural
+### 6.1.5 Consideraciones del diseño estructural
 
 El diseño construido priorizó aspectos como la **visibilidad**, la **facilidad de acceso**, la **distribución ordenada de componentes** y la **separación entre la zona térmica y la zona electrónica**. Aunque se trata de un prototipo académico y no de un equipo clínico real, la estructura desarrollada permite representar de forma clara el funcionamiento general de una incubadora neonatal a escala.
 
 En conjunto, la parte estructural del sistema logró integrar una cabina visible, una base de soporte resistente y un módulo externo de control, permitiendo que el prototipo fuera funcional, entendible visualmente y adecuado para la implementación del laboratorio.
 
-
-
-### 6. Funcionamiento
+## 6.2 Funcionamiento
 
 El ESP32 recibe los datos del sensor DHT22 y del módulo HX711, los procesa y los muestra en la pantalla OLED.
 
@@ -190,7 +200,9 @@ Adicionalmente, se implementó un sistema de visualización mediante LEDs para i
 
 Este sistema permite una interpretación rápida del estado de la incubadora sin necesidad de observar la pantalla OLED.
 
-### 7. Implementación
+----------
+
+# 7. Implementación
 
 ## 7.1 Descripción general del sistema
 
@@ -220,7 +232,6 @@ La primera parte importante del código corresponde a la importación de librer�
 #include <Adafruit_SSD1306.h>
 #include <DHT.h>
 #include "HX711.h"
-# Resultados
 ```
 Estas librerías permiten manejar la pantalla OLED, leer el sensor DHT22 y adquirir los datos de la galga de carga mediante el módulo HX711.
 
@@ -424,10 +435,9 @@ Esta señalización permite interpretar de forma inmediata si la incubadora se e
 
 Finalmente, todas las tareas del sistema se coordinan dentro del ciclo principal del programa. Allí se revisa el botón de tara, se leen los sensores, se actualiza la lógica de control, se encienden los LEDs correspondientes y se refresca la información mostrada en la OLED. En conjunto, esta etapa permite que el prototipo no solo mida variables, sino que también las procese, las muestre al usuario y actúe de acuerdo con el estado térmico interno de la incubadora
 
+----------
 
-# Análisis de Resultados
-
-¿La temperatura es estable? ¿Hay ruido en la señal? ¿Qué tan preciso es el sensor? Comparación entre sensores (LM35 vs DHT22)
+# 8. Análisis de Resultados
 
 Aunque el prototipo desarrollado cumplió con el objetivo académico de emular el funcionamiento básico de una incubadora neonatal a escala, el sistema presenta varias limitaciones importantes.
 
@@ -441,7 +451,9 @@ Además, aunque el sistema sí mide **temperatura, humedad y peso**, todavía **
 
 Finalmente, tanto la medición del peso como la de temperatura dependen de la calibración y de las características de los sensores empleados. La galga de carga de 5 kg y el DHT22 funcionaron adecuadamente para fines de laboratorio, pero su precisión y respuesta siguen siendo limitadas frente a sensores de uso biomédico real [15][16][18]
 
-## Costos generales del sistema
+----------
+
+# 9. Costos generales del sistema
 
 | Componente           | Cantidad | Precio Unitario (COP) | Subtotal (COP) |
 |:--------------------:|:--------:|:---------------------:|:--------------:|
@@ -459,54 +471,39 @@ Finalmente, tanto la medición del peso como la de temperatura dependen de la ca
 
 **Nota:** Componentes como el ESP32 y la pantalla OLED no fueron incluidos en el cálculo de costos, ya que se contaba previamente con ellos para el desarrollo del proyecto.
 
-# Limitaciones del Sistema
+----------
 
-Aunque el prototipo desarrollado cumplió con el objetivo académico de emular el funcionamiento básico de una incubadora neonatal a escala, el sistema presenta varias limitaciones importantes que deben tenerse en cuenta.
+# 10. Limitaciones del Sistema
 
-En primer lugar, **no se trata de un dispositivo médico real**, sino de un montaje experimental con fines de aprendizaje. Por esta razón, el sistema no cuenta con certificaciones clínicas, materiales biomédicos especializados ni condiciones de seguridad equivalentes a las exigidas en una incubadora neonatal hospitalaria [18].
+El prototipo desarrollado corresponde a un sistema experimental con fines académicos, por lo que no cumple con los requisitos necesarios para su uso clínico. No cuenta con certificaciones médicas, materiales biomédicos especializados ni condiciones de seguridad equivalentes a las de una incubadora neonatal real.
 
-Otra limitación importante es que el control implementado fue de tipo **ON/OFF**, el cual resulta funcional y sencillo para fines de laboratorio, pero no permite una regulación térmica tan precisa como la que se esperaría en un equipo clínico. Debido a esto, la temperatura presenta pequeñas oscilaciones alrededor del rango de referencia, en lugar de mantenerse completamente constante [6][8].
+El sistema de control implementado es de tipo ON/OFF, lo que limita la precisión en la regulación de la temperatura. Este tipo de control no permite una modulación continua de la potencia, por lo que no es adecuado para aplicaciones que requieren alta estabilidad térmica.
 
-Además, aunque el sistema sí mide **temperatura, humedad y peso**, aún **no incorpora otras variables críticas del monitoreo neonatal**, como saturación de oxígeno, frecuencia cardíaca, frecuencia respiratoria, concentración de CO2 o un control más preciso del flujo de aire. Estas variables también son relevantes en el contexto clínico y serían necesarias para acercar el prototipo a una incubadora neonatal más completa [17][18].
+El prototipo mide variables como temperatura, humedad y peso; sin embargo, no incorpora otros parámetros relevantes en el monitoreo neonatal, como saturación de oxígeno, frecuencia cardíaca, frecuencia respiratoria, concentración de CO₂ o control detallado del flujo de aire.
 
-Con respecto a la medición de peso, el uso de la **galga o celda de carga de 5 kg** con el módulo HX711 permitió obtener una estimación funcional, pero la precisión de esta medición depende de la correcta calibración del sistema y puede verse afectada por vibraciones, posición de la carga y pequeñas variaciones mecánicas de la estructura.
+La medición de peso depende de la calibración de la celda de carga y puede verse afectada por factores mecánicos como la distribución de la carga, vibraciones o la estabilidad de la estructura.
 
-De igual forma, el sensor **DHT22** resultó adecuado para el desarrollo académico del proyecto, pero su precisión y velocidad de respuesta siguen siendo limitadas frente a sensores más robustos empleados en aplicaciones biomédicas reales. Esto implica que el prototipo funciona bien como modelo didáctico, pero no como un sistema listo para uso clínico [15][16][18].
+Asimismo, el sensor DHT22 presenta limitaciones en precisión y velocidad de respuesta frente a sensores de uso biomédico, lo que restringe la exactitud del monitoreo térmico.
 
-Finalmente, el sistema tampoco incluye alarmas clínicas, registro avanzado de datos, comunicación remota ni estrategias de control más sofisticadas, como un controlador PID, que permitirían una supervisión más precisa y una respuesta más estable frente a cambios de temperatura [8][18].
+Finalmente, el sistema no incluye funcionalidades avanzadas como alarmas clínicas, registro de datos, comunicación remota ni estrategias de control más sofisticadas, lo que limita su alcance a un prototipo demostrativo.
+
+----------
 
 # Conclusiones
 
-## ¿Qué aprendimos?
+Se comprendió la importancia del control térmico en incubadoras neonatales y su impacto en el cuidado del recién nacido, especialmente en aquellos con baja capacidad de termorregulación como los bebés prematuros. A lo largo del desarrollo del laboratorio se reforzaron conceptos fundamentales de instrumentación biomédica, como la integración de sensores, la adquisición y procesamiento de datos, y el control de actuadores mediante un microcontrolador. Esto permitió entender cómo diferentes etapas de un sistema biomédico trabajan de manera conjunta para monitorear y regular variables fisiológicas.
 
-Durante el desarrollo de este laboratorio se comprendió la importancia de las incubadoras neonatales en el cuidado del recién nacido, especialmente en lo relacionado con el control de la temperatura y del ambiente interno. También se reforzaron conocimientos de **instrumentación biomédica**, integración de sensores, adquisición de señales, procesamiento de datos y control de actuadores mediante un microcontrolador.
+El prototipo desarrollado funcionó de manera satisfactoria como una incubadora neonatal a escala, permitiendo medir temperatura, humedad y peso, así como visualizar estos datos en tiempo real a través de la pantalla OLED. El sistema de control térmico respondió adecuadamente mediante el uso del bombillo como fuente de calor y el ventilador para la regulación de la temperatura. Además, la implementación de LEDs facilitó la identificación rápida del estado térmico, permitiendo al usuario interpretar fácilmente si la temperatura se encontraba dentro o fuera del rango adecuado. En conjunto, el sistema cumplió su propósito académico al representar de forma clara el funcionamiento básico de una incubadora.
 
-Adicionalmente, se aprendió a integrar en un mismo sistema el sensor **DHT22**, la **galga o celda de carga de 5 kg** con el módulo **HX711**, la **pantalla OLED**, los **relés**, el **bombillo**, el **ventilador** y los **LEDs** de estado. Esto permitió entender cómo varias etapas de sensado, procesamiento, visualización y actuación pueden trabajar juntas dentro de un prototipo biomédico [8][15][16].
+Como posibles mejoras, se recomienda implementar un sistema de control más preciso, como un controlador PID, que permita reducir las oscilaciones y mantener la temperatura más estable alrededor del valor deseado. Asimismo, sería conveniente utilizar sensores con mayor exactitud y mejorar la calibración del sistema de medición de peso. También se podrían incorporar variables adicionales relevantes en el monitoreo neonatal, así como funciones como alarmas, almacenamiento de datos o comunicación remota, con el objetivo de hacer el sistema más completo y acercarlo a una aplicación biomédica más realista.
 
-## ¿Qué funcionó?
-
-El sistema desarrollado logró funcionar de manera satisfactoria como una **incubadora neonatal a escala**. La lectura de temperatura y humedad permitió monitorear el ambiente interno, mientras que la galga de carga permitió estimar el peso colocado sobre la base. Asimismo, la pantalla OLED mostró de forma clara las variables medidas en tiempo real.
-
-En cuanto al control térmico, el bombillo funcionó correctamente como fuente de calor y el ventilador ayudó a disminuir la temperatura cuando esta superó el límite establecido. El uso de los LEDs azul, verde y rojo también facilitó la identificación rápida del estado térmico del sistema, permitiendo saber visualmente si la temperatura estaba baja, normal o alta.
-
-En general, puede decirse que el prototipo sí cumplió con su propósito académico, ya que logró representar de manera básica el funcionamiento de una incubadora neonatal y permitió comprobar experimentalmente la utilidad del monitoreo y control de variables ambientales [4][5][6][8].
-
-## ¿Qué mejoraríamos?
-
-Como mejora principal, sería conveniente reemplazar el control ON/OFF por un **control más preciso**, por ejemplo un controlador **PID**, que permita reducir las oscilaciones de temperatura y mantener el sistema más cerca del valor deseado de forma continua [8][18].
-
-También sería recomendable incorporar **sensores de mayor exactitud y menor tiempo de respuesta**, de modo que la medición térmica sea más estable y confiable. En el caso del peso, una mejor calibración mecánica y electrónica podría aumentar la precisión de la galga de carga [15][16].
-
-Otra mejora importante sería añadir el monitoreo de **otras variables relevantes en neonatología**, como frecuencia cardíaca, saturación de oxígeno, frecuencia respiratoria o flujo de aire, para que el sistema se acerque más a una incubadora neonatal real [17][18].
-
-Finalmente, sería útil incluir funciones adicionales como **alarmas**, almacenamiento de datos, comunicación inalámbrica o supervisión remota, ya que estas características harían el sistema más completo, más seguro y más cercano a una aplicación biomédica de mayor nivel [18].
-
-En conclusión, el laboratorio permitió demostrar que es posible construir un prototipo funcional de incubadora neonatal a escala mediante el uso de sensores, actuadores y un microcontrolador. Aunque el sistema presenta limitaciones importantes frente a un equipo clínico real, cumplió su propósito formativo y permitió aplicar de manera práctica conceptos fundamentales de la instrumentación biomédica.
+----------
 
 # Preguntas de Discusión
+
 • Pregunta 1: ¿Qué otras variables (y por qué) además de las aquí mencionadas son críticas en el monitoreo neonatal?
 
-Además de temperatura y humedad, son esenciales saturación de oxígeno (SpO2, para detectar hipoxia o cardiopatías, objetivo >90-95% post-nacimiento), frecuencia cardíaca (FC, ~120-160 lpm para estabilidad hemodinámica), presión arterial (PA), frecuencia respiratoria (FR ~40-60 rpm) y CO2 transcutáneo (TcPCO2, para ventilación no invasiva). Estas previenen hipoxia, acidosis y fallos cardiopulmonares en UCI neonatal [17].
+Además de temperatura y humedad, son esenciales saturación de oxígeno (SpO2, para detectar hipoxia o cardiopatías, objetivo >90-95% post-nacimiento), frecuencia cardíaca (FC, ~120-160 lpm para estabilidad hemodinámica), presión arterial (PA), frecuencia respiratoria (FR ~40-60 rpm) y CO₂ transcutáneo (TcPCO₂, para ventilación no invasiva). Estas previenen hipoxia, acidosis y fallos cardiopulmonares en UCI neonatal [17].
 
 • Pregunta 2: ¿Qué haría falta para convertir el sistema desarrollado en una incubadora neonatal real?
 
@@ -515,6 +512,8 @@ Se requiere control cerrado (servo-control PID con actuadores de calefacción/ve
 • Pregunta 3: ¿Qué semejanzas hay entre una incubadora neonatal y una servo-cuna?
 
 Ambas regulan temperatura (servo-control para neutral térmico), humedad y protegen neonatos prematuros de pérdida de calor, con calefacción radiante/convección y alarmas. Difieren en que incubadoras son cerradas (mejor aislamiento/humedad, primera semana), servo-cunas abiertas (acceso fácil para cuidados maternos) [19].
+
+----------
 
 # Bibliografía
 1. Bustamante, J. B. (2013, July). DISEÑO e IMPLEMENTACIÓN DE UN PROTOTIPO DE INCUBADORA NEONATAL EN CUMPLIMIENTO CON LA NORMA UNE-EN-60601-2-19. dspace.ups.edu.ec. https://dspace.ups.edu.ec/bitstream/123456789/5091/1/UPS-CT002691.pdf
@@ -536,3 +535,5 @@ Ambas regulan temperatura (servo-control para neutral térmico), humedad y prote
 17. Medición de la saturación de oxígeno durante la recepción neonatal, con el fin de establecer parámetros estándar de saturación en el Hospital Gineco Obstétrico Luz Elena Arismendi (2018:Quito). (2018). docs.bvsalud.org. Retrieved April 23, 2026, from https://docs.bvsalud.org/biblioref/2019/08/1010310/revista-pediatria-vfinal-18-22.pdf
 18. Denetim. (n.d.). TS EN 60601-2-19 Equipo médico eléctrico - Parte 2-19: Características específicas para la seguridad básica y el rendimiento requerido de las incubadoras de bebés. https://www.denetim.com/es/laboratuvar/medikal-cihaz-testleri/ts-en-60601-2-19-elektrikli-tibbi-donanim-bolum-2-19-bebek-kuvozlerinin-temel-guvenligi-ve-gerekli-performansi-icin-belirli-ozellikler/
 19. Cochrane. (2025). Atención en la cuna versus atención en incubadora para niños prematuros. Cochrane. https://www.cochrane.org/es/evidence/CD003062_cot-nursing-versus-incubator-care-preterm-infants
+20. M. H. Rashid, Power Electronics: Circuits, Devices and Applications, 4th ed. Pearson,(2014). https://share.google/Gdikp0bQ7nXfa68NM
+21. R. Chura, “EJEMPLO DE ARTICULO CIENTIFICO.pdf,” Scribd. https://es.scribd.com/document/379178201/EJEMPLO-DE-ARTICULO-CIENTIFICO-pdf

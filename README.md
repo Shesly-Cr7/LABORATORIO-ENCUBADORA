@@ -25,6 +25,7 @@ Hardware:
 - Capacitor de 2200 µF / 25 V
 - Regulador de voltaje LM7805
 - Resistencias
+- LEDs
 ----
 
 # INTRODUCCIÓN
@@ -124,10 +125,13 @@ Cómo se visualiza
 
 ## 7. Código Arduino Lectura del sensor Envío serial Visualización OLED
 
-
 # Resultados
 
-Gráficas de temperatura Comportamiento del sistema Pruebas realizadas
+Durante las pruebas realizadas, el sistema registró temperaturas entre < 36°C y > 38°C. Se observó que el bombillo permitió incrementar la temperatura interna de la incubadora, mientras que el ventilador ayudó a disminuirla.
+
+El sistema logró mantener la temperatura cercana al rango deseado (36.5°C - 37.5°C), presentando pequeñas oscilaciones debido al control ON/OFF implementado.
+
+La celda de carga permitió medir el peso, aunque fue necesario realizar un proceso de calibración para mejorar la precisión de las mediciones.
 
 # Análisis de Resultados
 ¿La temperatura es estable? ¿Hay ruido en la señal? ¿Qué tan preciso es el sensor? Comparación entre sensores (LM35 vs DHT22)

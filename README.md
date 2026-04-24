@@ -61,7 +61,7 @@ El control de temperatura es crítico en neonatología, ya que los recién nacid
 
 El concepto de ambiente térmico neutro se refiere a las condiciones en las cuales el neonato mantiene su temperatura corporal con un gasto mínimo de energía, lo cual es esencial para su desarrollo adecuado [6][10].
 
-## 3.3 Sensore de Temperatura DHT22
+## 3.3 Sensores de Temperatura DHT22
 
 El DHT22 (AM2302) es un sensor digital integrado de temperatura y humedad relativa que utiliza comunicación serial de un solo cable, entregando datos calibrados directamente sin necesidad de conversión analógica. Ofrece un rango de temperatura de -40 a 80 °C con precisión de ±0.5 °C (mejor que DHT11's ±2 °C), y humedad del 0 al 100% RH con ±2-5% de precisión, ideal para aplicaciones críticas como incubadoras neonatales [15].
 

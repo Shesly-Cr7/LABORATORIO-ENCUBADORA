@@ -112,7 +112,7 @@ Parte estructural:
 
 
 ## 6.1 Sistema de fuente 
-Sensor → ESP32 → OLED / MATLAB 
+Sensor → ESP32 → OLED 
 ## 6.2 Distema de temperaturaa y peso 
 Conexión del sensor Conexión de la OLED 
 ## 6.3 Funcionamiento 
